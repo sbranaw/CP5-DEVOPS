@@ -17,6 +17,6 @@ A compilação com Maven Wrapper terminou em BUILD SUCCESS em 2 de outubro de 20
 
 ## Publicação e entrega acadêmica
 
-Destino autorizado: https://github.com/sbranaw/CP5-DEVOPS. Código, DDL, scripts, Wrapper, guias e PDF preparados para publicação; .local, target e credenciais excluídos pelo .gitignore. O resultado do envio é informado ao usuário após a confirmação do GitHub.
+Destino autorizado: https://github.com/sbranaw/CP5-DEVOPS. Código, DDL, scripts, Wrapper, guias e PDF preparados para publicação; .local, target e credenciais excluídos pelo .gitignore. Publicação confirmada no branch main: commit inicial 67efe08. Código, guias e PDF disponíveis no GitHub.
 
 O grupo ainda deve demonstrar as operações no banco, conferir acesso do avaliador e realizar o upload do PDF no Teams pelo representante. A documentação não substitui essa apresentação.

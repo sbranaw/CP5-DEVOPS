@@ -44,7 +44,7 @@ Critério: comprovar recebimento de telemetria no recurso configurado.
 
 Resultado: agente Java gerenciado habilitado no Web App, Application Insights vinculado ao Log Analytics e ingestão comprovada por consultas reais. Foram registradas 11 requisições à lista com HTTP 200, 16 chamadas SQL sem falhas e o 404 controlado. Um segundo 404 foi identificado como a verificação de inicialização do Azure. Consulte `application-insights.md` e `resultado-etapa-5.md`. A etapa 6 aguarda autorização.
 
-## 6. GitHub, How To e apresentação — material preparado
+## 6. GitHub, How To e apresentação — concluída
 
 Concluir o guia de implantação, incluir fonte, DDL e scripts no repositório autorizado. Preparar roteiro para mostrar cada operação no banco e os comandos do CLI. Produzir o material para `<nome_grupo>_webapp.pdf` com identificação do grupo e evidências reais.
 
