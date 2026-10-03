@@ -1,10 +1,10 @@
 # Implantação na Azure com Azure CLI
 
-## Recursos previstos
+## Recursos
 
 Um grupo de recursos exclusivo para DimDim, plano App Service Linux, Web App Java 21, servidor lógico Azure SQL e banco SQL Basic com duas tabelas relacionadas.
 
-O roteiro usa F1 no Web App por padrão. Se essa modalidade não estiver disponível na assinatura/região, ele interrompe a execução; não muda automaticamente para um plano pago. Azure SQL Basic consome créditos e deve permanecer ativo para preservar os dados e demonstrar o checkpoint. O custo depende da região, oferta e tempo de uso. Consulte a assinatura e a calculadora antes de trocar o plano.
+O roteiro usa F1 no Web App por padrão. Se essa modalidade não estiver disponível na assinatura/região, ele interrompe a execução; não muda automaticamente para um plano pago. Azure SQL Basic consome créditos. O custo depende da região, oferta e tempo de uso. Consulte a assinatura e a calculadora antes de trocar o plano.
 
 ## Pré-requisitos
 
@@ -12,7 +12,7 @@ O roteiro usa F1 no Web App por padrão. Se essa modalidade não estiver dispon�
 - `./mvnw.cmd verify` concluído antes da publicação.
 - Autenticação no Azure CLI com uma assinatura ativa: `az login`.
 - Permissão para criar os recursos e conectividade local à porta SQL 1433.
-- Escolher uma região permitida pela assinatura. Neste computador foi consultada a política de regiões da assinatura de estudante; brazilsouth estava permitida.
+- Escolher uma região permitida pelas políticas da assinatura.
 
 ## 1. Configuração
 
@@ -50,7 +50,7 @@ O DDL é aplicado quando nenhuma das duas tabelas existe. Um esquema incompleto 
 
 ## Credenciais
 
-O roteiro gera senhas aleatórias em memória. A senha da aplicação é enviada às configurações do Web App e não é impressa. O arquivo JSON temporário de configurações é removido no bloco de limpeza. A senha administrativa não é salva: se precisar de acesso administrativo posteriormente, redefina-a pelo serviço Azure. Para o CRUD cotidiano e a demonstração, utilize o usuário restrito da aplicação.
+O roteiro gera senhas aleatórias em memória. A senha da aplicação é enviada às configurações do Web App e não é impressa. O arquivo JSON temporário de configurações é removido no bloco de limpeza. A senha administrativa não é salva: se precisar de acesso administrativo posteriormente, redefina-a pelo serviço Azure. Para o CRUD, utilize o usuário restrito da aplicação.
 
 Não executar com `--debug`, não publicar arquivos `.local` e não registrar credenciais em capturas. As senhas não devem ser passadas literalmente no histórico do terminal.
 
@@ -78,7 +78,7 @@ Para consultar o estado dos recursos e aguardar a resposta da aplicação:
 
 O roteiro consulta os recursos, verifica que o banco está online e que `/pedidos` apresenta a aplicação sem o aviso de demonstração. Não modifica os recursos nem os dados.
 
-Cadastre um pedido e execute cada operação, mostrando o resultado no banco após cada uma. Para a demonstração em uma ferramenta SQL, use:
+Cadastre um pedido e confira a persistência no banco.
 
 Também é possível conferir um pedido diretamente por JDBC sem imprimir credenciais:
 
@@ -86,7 +86,7 @@ Também é possível conferir um pedido diretamente por JDBC sem imprimir creden
 ./infra/Inspect-AzurePedido.ps1 -ConfigPath .local/azure-config.json -PedidoId 3
 ```
 
-Substitua 3 pelo ID que está demonstrando. O roteiro usa as configurações do Web App em memória e consulta somente esse pedido e seus itens. É necessário que o IPv4 do computador esteja liberado no firewall SQL. Se o IP mudar, atualize a regra `DimDimClient` antes da consulta.
+Substitua 3 pelo ID que deseja consultar. O roteiro usa as configurações do Web App em memória e consulta somente esse pedido e seus itens. É necessário que o IPv4 do computador esteja liberado no firewall SQL. Se o IP mudar, atualize a regra `DimDimClient` antes da consulta.
 
 Consultas equivalentes em uma ferramenta SQL:
 

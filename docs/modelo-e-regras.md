@@ -1,6 +1,6 @@
 # Modelo e regras de negócio
 
-Estas regras concretizam a proposta de gestão de pedidos. São decisões de implementação, além dos requisitos acadêmicos de duas tabelas relacionadas e CRUD.
+A aplicação gerencia pedidos e seus itens, com as regras e o relacionamento descritos abaixo.
 
 ## Pedido: tabela dbo.pedido
 
@@ -40,7 +40,7 @@ Um pedido possui zero ou mais itens. Cada item pertence a exatamente um pedido. 
 - Adicionar, editar e excluir itens apenas em RASCUNHO.
 - Confirmar um RASCUNHO com pelo menos um item.
 - Cancelar um RASCUNHO ou CONFIRMADO. CANCELADO é estado final.
-- Excluir um pedido em qualquer estado após confirmação na tela; o banco também remove seus itens por ON DELETE CASCADE. Essa exclusão simplifica a demonstração acadêmica e não atende a requisitos de auditoria financeira.
+- Excluir um pedido em qualquer estado após confirmação na tela; o banco também remove seus itens por ON DELETE CASCADE. A exclusão é definitiva e não implementa auditoria financeira.
 - Tratar IDs inexistentes com mensagem clara. Impedir acesso a um item por um pedido diferente do seu proprietário.
 - Executar alterações em transações para preservar a consistência.
 
@@ -48,6 +48,6 @@ Um pedido possui zero ou mais itens. Cada item pertence a exatamente um pedido. 
 
 Remover espaços nas extremidades de cliente e descrição. Rejeitar texto vazio, datas inválidas, status desconhecido, quantidade fora da faixa e preço fora da faixa. Regras de status e de confirmação serão verificadas pelo serviço Java, além das restrições estruturais do banco.
 
-## Demonstração prevista
+## Fluxo de uso
 
 Criar pedido, adicionar itens, consultar detalhes, alterar quantidade/preço, excluir um item e excluir o pedido. Após cada operação, conferir as tabelas no banco. Mostrar também o impedimento de confirmar um pedido vazio.

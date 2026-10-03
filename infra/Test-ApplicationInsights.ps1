@@ -22,7 +22,7 @@ for ($attempt = 1; $attempt -le 18; $attempt++) {
 }
 if (!$healthy) { throw 'A aplicação não ficou disponível após habilitar o monitoramento.' }
 for ($index = 1; $index -le 10; $index++) {
-    $null = Invoke-WebRequest -Uri ($url + '?checkpoint=etapa5') -UseBasicParsing -TimeoutSec 30
+    $null = Invoke-WebRequest -Uri ($url + '?monitoring=validation') -UseBasicParsing -TimeoutSec 30
 }
 # ID zero é sempre inválido no serviço. Gera 404 controlado, sem modificar dados.
 $controlled404 = $false

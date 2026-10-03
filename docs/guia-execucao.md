@@ -11,13 +11,14 @@
 
 Site: https://dimdim-pedidos-261002-ce05.azurewebsites.net/pedidos. Para navegar no site não é necessário instalar Java.
 
-## 2. Entre no projeto
+## 2. Obtenha o projeto
 
-Neste computador, abra PowerShell:
+Clone o repositório e entre na pasta:
 ```powershell
-Set-Location 'C:\Users\Sbrana\.codex\.chatgpt-projects\g-p-6ac038339f5481919c654fcf9261809a\dimdim-pedidos'
+git clone https://github.com/sbranaw/CP5-DEVOPS.git
+cd CP5-DEVOPS
 ```
-Em outro computador, use a pasta onde extraiu o projeto. Todos os comandos partem da pasta com pom.xml e mvnw.cmd.
+Todos os comandos seguintes partem da pasta que contém pom.xml e mvnw.cmd. Se usar o ZIP do GitHub, extraia-o e abra o terminal nessa pasta.
 
 ## 3. Confira JDK 21
 
@@ -55,7 +56,7 @@ Acesse http://127.0.0.1:8081/pedidos.
 
 ## 6. Rode com Azure SQL persistente
 
-O banco deve conter as tabelas de database/001-create-tables.sql. A implantação atual já possui o esquema. Não reaplique DDL sem conferir o banco existente. O usuário precisa de CRUD nas tabelas e o firewall deve permitir o IPv4 atual do computador. A conexão usa TCP 1433.
+O banco deve conter as tabelas de database/001-create-tables.sql. Não reaplique DDL sem conferir o banco existente. O usuário precisa de CRUD nas tabelas e o firewall deve permitir o IPv4 atual do computador. A conexão usa TCP 1433.
 
 Substitua os campos de exemplo e leia a senha sem colocá-la no histórico:
 ```powershell
@@ -69,7 +70,7 @@ try {
     Remove-Item Env:DB_PASSWORD -ErrorAction SilentlyContinue
 }
 ```
-Abra http://localhost:8080/pedidos. Solicite credenciais ao responsável pelo banco. A senha administrativa gerada no provisionamento não foi salva; acesso administrativo posterior exige redefinição pelo responsável no Azure. Isso não é necessário para navegar no site.
+Abra http://localhost:8080/pedidos. Solicite credenciais ao responsável pelo banco. Quando o provisionamento gera uma senha administrativa em memória, acesso administrativo posterior pode exigir redefinição no Azure. Isso não é necessário para navegar no site.
 
 | Variável | Uso |
 | --- | --- |
@@ -100,4 +101,4 @@ Veja [How To](how-to.md), [implantação](implantacao-azure.md) e [monitoramento
 | Edição bloqueada | Apenas rascunhos podem ser alterados |
 | Sem telemetria | Confira configuração, gere acessos e aguarde ingestão |
 
-Não publique .local, target, senhas ou tokens. Os arquivos sincronizados em sources do projeto ChatGPT permanecem intactos.
+Não publique .local, target, senhas ou tokens.

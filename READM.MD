@@ -8,11 +8,11 @@ Aplicação Java de gestão de pedidos com telas em português, CRUD de pedidos 
 - Moisés Waidemann Molinillo — RM563719
 
 **Site:** https://dimdim-pedidos-261002-ce05.azurewebsites.net/pedidos
-**Repositório de entrega:** https://github.com/sbranaw/CP5-DEVOPS
+**Repositório:** https://github.com/sbranaw/CP5-DEVOPS
 
 ## Comece aqui
 
-O [guia de execução](docs/guia-execucao.md) apresenta requisitos, caminhos e comandos. O [How To](docs/how-to.md) explica implantação e validação. O [roteiro de apresentação](docs/roteiro-apresentacao.md) organiza a demonstração no banco.
+O [guia de execução](docs/guia-execucao.md) apresenta requisitos, caminhos e comandos. O [How To](docs/how-to.md) explica implantação e validação. O [guia de uso](docs/uso.md) descreve as operações e a conferência dos dados.
 
 ## Tecnologias
 
@@ -32,7 +32,7 @@ O [guia de execução](docs/guia-execucao.md) apresenta requisitos, caminhos e c
 
 O navegador envia um formulário ao PedidoController. O controlador valida a entrada e chama PedidoService. O serviço verifica as regras e executa a alteração em uma transação. PedidoRepository acessa Pedido e ItemPedido por JPA; o banco mantém as chaves e o relacionamento. A resposta é uma página Thymeleaf ou um redirecionamento com mensagem. No Azure, o agente Java coleta requisições e dependências SQL.
 
-O sistema usa páginas HTML e formulários; não possui API REST JSON nesta versão. As alterações usam POST e token CSRF. O escopo escolhido não exige login.
+O sistema usa páginas HTML e formulários; não possui API REST JSON nesta versão. As alterações usam POST e token CSRF. A aplicação não exige login.
 
 ## Fluxo do usuário
 
@@ -120,10 +120,10 @@ Deploy-Azure.ps1 provisiona recursos pelo CLI, aplica DDL, configura acesso SQL,
 
 Enable-ApplicationInsights.ps1 habilita o agente. Test-ApplicationInsights.ps1 comprova ingestão e Query-ApplicationInsights.ps1 consulta registros. O workspace possui retenção de 30 dias e limite diário de 0,1 GB; esse limite não garante teto monetário.
 
-## Validações e limites
+## Testes e limites
 
-Nas etapas anteriores passaram 44 testes locais e 2 testes Azure SQL, incluindo CRUD e exclusão em cascata. Um pedido criado pela interface publicada foi conferido no banco. A telemetria registrou 11 leituras HTTP 200 e 16 chamadas SQL sem falhas na janela consultada. Esses são registros pontuais, não uma promessa de disponibilidade contínua.
+Os testes locais verificam regras de negócio e formulários com persistência JPA em H2. AzureSqlIntegrationTest valida CRUD no banco de destino e a exclusão em cascata do DDL. Os testes de integração são ativados somente com DIMDIM_AZURE_TEST=true e conexão configurada.
 
-Não há autenticação, auditoria financeira, pagamentos, paginação ou teste específico de concorrência nesta versão. A exclusão definitiva serve à demonstração acadêmica.
+Não há autenticação, auditoria financeira, pagamentos, paginação ou teste específico de concorrência nesta versão. A exclusão é definitiva.
 
-Consulte [resultado etapa 4](docs/resultado-etapa-4.md), [resultado etapa 5](docs/resultado-etapa-5.md), [modelo](docs/modelo-e-regras.md) e [etapas](docs/etapas.md). O representante do grupo entrega o PDF no Teams.
+Consulte o [modelo de dados](docs/modelo-e-regras.md), o [guia de execução](docs/guia-execucao.md) e o [guia de uso](docs/uso.md).

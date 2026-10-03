@@ -1,6 +1,6 @@
 # How To — executar, implantar e comprovar
 
-Comece pelos [requisitos e caminhos](guia-execucao.md). Execute os comandos na raiz dimdim-pedidos.
+Comece pelos [requisitos e caminhos](guia-execucao.md). Execute os comandos na raiz do repositório, onde está pom.xml.
 
 ## Compilar e experimentar
 
@@ -40,14 +40,10 @@ O primeiro comando mostra o plano, o segundo cria recursos/aplica DDL/configura 
 ```
 A configuração reinicia o site; a ingestão leva alguns minutos. Veja [application-insights.md](application-insights.md).
 
-## Demonstrar CRUD
+## Conferir dados
 
-Siga o [roteiro](roteiro-apresentacao.md). Confira no banco depois de cada operação:
+Veja o [guia de uso](uso.md). Para conferir um pedido no banco:
 ```powershell
 ./infra/Inspect-AzurePedido.ps1 -ConfigPath .local/azure-config.json -PedidoId 3
 ```
 Substitua 3 pelo ID criado. O firewall precisa permitir o computador.
-
-## Entregar
-
-O repositório de destino é https://github.com/sbranaw/CP5-DEVOPS. Inclua fontes, DDL, Wrapper, scripts e guias; exclua .local e target. Veja [GitHub](github.md). Revise o PDF CP5-DEVOPS_webapp.pdf com identificação e evidências. O representante realiza upload no Teams.

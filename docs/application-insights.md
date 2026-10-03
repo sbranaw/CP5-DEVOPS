@@ -56,7 +56,7 @@ O teste:
 
 O recebimento dos dados pode levar alguns minutos. O resultado fica em `.local/insights-validation.json`, sem credenciais. Se a espera expirar, isso significa que a ingestão ainda não foi comprovada; o roteiro não declara sucesso somente porque as variáveis estão configuradas.
 
-## Consultas para a apresentação
+## Consultas de telemetria
 
 Abra o workspace do projeto no portal Azure e selecione **Logs**. As consultas estão em:
 
@@ -75,9 +75,9 @@ O roteiro substitui o marcador do recurso nas consultas que o utilizam e remove 
 
 A falha HTTP 404 gerada pelo teste é intencional. Ela não representa falha da conexão SQL. Uma resposta 404 também não exige que exista uma linha em AppExceptions, porque a aplicação trata o pedido inexistente e responde ao usuário.
 
-Na validação desta implantação também apareceu `/robots933456.txt`, solicitado pelo Azure durante a inicialização. Esse é o caminho padrão de aquecimento do App Service; uma resposta 404 é aceita nessa verificação quando não há códigos específicos configurados. Veja a [referência de configurações do App Service](https://learn.microsoft.com/en-us/azure/app-service/reference-app-settings). As evidências desta execução estão em `resultado-etapa-5.md`.
+A telemetria pode registrar requisições para `/robots933456.txt`, feitas pelo Azure durante a inicialização. Esse é o caminho padrão de aquecimento do App Service; uma resposta 404 é aceita nessa verificação quando não há códigos específicos configurados. Veja a [referência de configurações do App Service](https://learn.microsoft.com/en-us/azure/app-service/reference-app-settings).
 
-## Roteiro de demonstração
+## Inspecionar a telemetria
 
 1. Mostrar o recurso Application Insights vinculado ao workspace.
 2. Acessar a aplicação publicada e consultar os pedidos.
@@ -85,7 +85,7 @@ Na validação desta implantação também apareceu `/robots933456.txt`, solicit
 4. Mostrar as dependências SQL, comprovando as chamadas ao banco.
 5. Mostrar a resposta 404 controlada e explicar a origem do teste.
 
-Esse roteiro cobre o item Application Insights do checkpoint. O enunciado não determina uma quantidade específica de métricas, alertas ou dashboards. Não foram criados alertas, notificações nem monitoramento agendado nesta etapa.
+A configuração não cria alertas, notificações ou monitoramento agendado.
 
 ## Referências oficiais
 
