@@ -2,13 +2,7 @@
 
 Aplicação de gestão de pedidos em Java para o checkpoint de Aplicações e Banco em Nuvem.
 
-## Estado atual
-
-Etapas 1 a 5 concluídas: planejamento, banco, base Java, telas de CRUD, implantação na Azure pelo CLI e Application Insights. Os 44 testes locais passaram, assim como os 2 testes de integração com Azure SQL real. Também foi criado um pedido pela interface publicada e conferido diretamente no banco. A telemetria real confirmou requisições HTTP e chamadas SQL.
-
 Aplicação publicada: [DimDim Pedidos](https://dimdim-pedidos-261002-ce05.azurewebsites.net/pedidos).
-
-A etapa 6 reúne o How To, o guia de execução, o material PDF e a publicação no repositório do grupo.
 
 ## Leia primeiro
 
