@@ -1,0 +1,16 @@
+[
+  {
+    "TimeGenerated": "2026-10-03T00:45:39.418Z",
+    "Name": "GET /pedidos/{id}",
+    "Url": "https://dimdim-pedidos-261002-ce05.azurewebsites.net/pedidos/0",
+    "ResultCode": "404",
+    "AppRoleName": "dimdim-pedidos"
+  },
+  {
+    "TimeGenerated": "2026-10-03T00:45:36.161Z",
+    "Name": "GET /**",
+    "Url": "http://169.254.129.2/robots933456.txt",
+    "ResultCode": "404",
+    "AppRoleName": "dimdim-pedidos"
+  }
+]

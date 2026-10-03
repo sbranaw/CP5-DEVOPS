@@ -1,0 +1,5 @@
+AppDependencies
+| where TimeGenerated > ago(1h)
+| where DependencyType contains 'SQL' or DependencyType contains 'JDBC'
+| summarize Chamadas=count(), Falhas=countif(Success == false), DuracaoMediaMs=round(avg(DurationMs),2) by DependencyType, Target
+| order by Chamadas desc

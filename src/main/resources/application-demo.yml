@@ -1,0 +1,15 @@
+# Apenas demonstração local. Dados em memória são perdidos ao encerrar.
+spring:
+  datasource:
+    url: jdbc:h2:mem:dimdim-demo;MODE=MSSQLServer;DB_CLOSE_DELAY=-1;INIT=CREATE SCHEMA IF NOT EXISTS dbo
+    username: sa
+    password: ''
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  h2:
+    console:
+      enabled: false
+server:
+  address: 127.0.0.1

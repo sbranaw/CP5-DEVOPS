@@ -1,0 +1,13 @@
+{
+  "subscriptionId": "00000000-0000-0000-0000-000000000000",
+  "deploymentId": "dimdim-seu-sufixo",
+  "location": "brazilsouth",
+  "resourceGroup": "rg-dimdim-seu-sufixo",
+  "appServicePlan": "plan-dimdim-seu-sufixo",
+  "webApp": "dimdim-pedidos-seu-sufixo",
+  "sqlServer": "dimdim-sql-seu-sufixo",
+  "database": "dimdim-pedidos",
+  "sqlAdmin": "dimdimadmin",
+  "appServiceSku": "F1",
+  "sqlServiceObjective": "Basic"
+}

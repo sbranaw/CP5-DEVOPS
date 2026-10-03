@@ -1,0 +1,5 @@
+AppRequests
+| where _ResourceId =~ '__COMPONENT_ID__' and TimeGenerated > ago(1h)
+| where toint(ResultCode) >= 400
+| project TimeGenerated, Name, Url, ResultCode, AppRoleName
+| order by TimeGenerated desc

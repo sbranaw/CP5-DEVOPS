@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Pedidos')}"></head>
+<body><header th:replace="~{fragments :: header}"></header>
+<main class="container"><div th:replace="~{fragments :: avisos}"></div>
+  <div class="page-heading"><div><p class="eyebrow">GESTÃO DE PEDIDOS</p><h1>Seus pedidos, organizados.</h1><p class="muted">Acompanhe clientes, itens e valores em um só lugar.</p></div><a class="button" th:href="@{/pedidos/novo}">+ Novo pedido</a></div>
+  <dl class="summary"><div><dt>Pedidos cadastrados</dt><dd th:text="${#lists.size(pedidos)}">0</dd></div><div><dt>Em rascunho</dt><dd th:text="${quantidadeRascunhos}">0</dd></div><div><dt>Valor dos confirmados</dt><dd th:text="${@apresentacao.moeda(totalConfirmados)}">R$ 0,00</dd></div></dl>
+  <section class="surface" aria-labelledby="lista-titulo"><div class="section-heading"><h2 id="lista-titulo">Todos os pedidos</h2><span class="muted">Mais recentes primeiro</span></div>
+  <div class="empty" th:if="${#lists.isEmpty(pedidos)}"><span class="empty-symbol" aria-hidden="true">+</span><h3>Seu primeiro pedido começa aqui</h3><p>Cadastre o cliente e depois adicione os produtos.</p><a class="button" th:href="@{/pedidos/novo}">Criar primeiro pedido</a></div>
+  <div class="table-scroll" th:unless="${#lists.isEmpty(pedidos)}"><table><caption class="sr-only">Lista de pedidos cadastrados</caption><thead><tr><th>Pedido / cliente</th><th>Data</th><th>Status</th><th>Itens</th><th class="money">Total</th><th><span class="sr-only">Ações</span></th></tr></thead>
+  <tbody><tr th:each="pedido : ${pedidos}"><td><a class="row-link" th:href="@{/pedidos/{id}(id=${pedido.id})}" th:text="${pedido.nomeCliente}"></a><span class="cell-subtitle" th:text="'Pedido #' + ${pedido.id}"></span></td><td th:text="${@apresentacao.data(pedido.dataPedido)}"></td><td><span class="badge" th:classappend="${pedido.status.name().toLowerCase()}" th:text="${@apresentacao.status(pedido.status)}"></span></td><td th:text="${#lists.size(pedido.itens)}"></td><td class="money" th:text="${@apresentacao.moeda(pedido.total)}"></td><td><a th:href="@{/pedidos/{id}(id=${pedido.id})}" th:attr="aria-label='Ver pedido ' + ${pedido.id}">Ver detalhes</a></td></tr></tbody></table></div>
+  </section>
+</main><footer th:replace="~{fragments :: footer}"></footer></body></html>

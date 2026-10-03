@@ -1,0 +1,20 @@
+// O roteiro substitui __COMPONENT_ID__ pelo ID do Application Insights.
+// Fontes vazias permitem consultar um workspace novo antes da primeira ingestão.
+let requestsData = union isfuzzy=true AppRequests,
+    (datatable(TimeGenerated:datetime, _ResourceId:string, Name:string, ResultCode:string, DurationMs:real, Success:bool)[]);
+let dependenciesData = union isfuzzy=true AppDependencies,
+    (datatable(TimeGenerated:datetime, _ResourceId:string, DependencyType:string, Target:string, DurationMs:real, Success:bool)[]);
+let exceptionsData = union isfuzzy=true AppExceptions,
+    (datatable(TimeGenerated:datetime, _ResourceId:string, ExceptionType:string)[]);
+union
+    (requestsData | where _ResourceId =~ '__COMPONENT_ID__' and TimeGenerated > ago(1h)
+      | summarize Events=count(), Failures=countif(Success == false), MeanDurationMs=round(avg(DurationMs),2) by Label=Name, ResultCode
+      | extend Category='request'),
+    (dependenciesData | where _ResourceId =~ '__COMPONENT_ID__' and TimeGenerated > ago(1h)
+      | summarize Events=count(), Failures=countif(Success == false), MeanDurationMs=round(avg(DurationMs),2) by Label=strcat(DependencyType, ' / ', Target)
+      | extend Category='dependency', ResultCode=''),
+    (exceptionsData | where _ResourceId =~ '__COMPONENT_ID__' and TimeGenerated > ago(1h)
+      | summarize Events=count() by Label=ExceptionType
+      | extend Category='exception', ResultCode='', Failures=Events, MeanDurationMs=real(null))
+| project Category, Label, ResultCode, Events, Failures, MeanDurationMs
+| order by Category asc, Events desc

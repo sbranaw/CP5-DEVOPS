@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(titulo)">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${titulo} + ' · DimDim Pedidos'">DimDim Pedidos</title>
+  <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header class="site-header" th:fragment="header">
+  <div class="header-content"><a class="brand" th:href="@{/pedidos}"><span class="brand-icon" aria-hidden="true">D</span>DimDim<span class="brand-subtitle">Pedidos</span></a>
+  <nav aria-label="Navegação principal"><a th:href="@{/pedidos}">Todos os pedidos</a><a class="button small" th:href="@{/pedidos/novo}">Novo pedido</a></nav></div>
+</header>
+<div th:fragment="avisos">
+  <p class="notice demo" th:if="${modoDemo}">Demonstração local: os dados são temporários e serão apagados ao encerrar a aplicação.</p>
+  <p class="notice success" role="status" th:if="${sucesso}" th:text="${sucesso}"></p>
+</div>
+<footer class="site-footer" th:fragment="footer">DimDim Pedidos · Gestão de pedidos e itens</footer>
+</body></html>

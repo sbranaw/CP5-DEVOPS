@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments :: head(${pedidoId == null ? 'Novo pedido' : 'Editar pedido'})}"></head>
+<body><header th:replace="~{fragments :: header}"></header><main class="container narrow"><div th:replace="~{fragments :: avisos}"></div>
+  <a class="back-link" th:href="${pedidoId == null} ? @{/pedidos} : @{/pedidos/{id}(id=${pedidoId})}">← Voltar</a>
+  <div class="page-heading"><div><p class="eyebrow">DADOS DO PEDIDO</p><h1 th:text="${pedidoId == null ? 'Novo pedido' : 'Editar pedido #' + pedidoId}"></h1><p class="muted">Informe o cliente e a data. Você adicionará os itens na próxima tela.</p></div></div>
+  <form class="surface form-surface" th:object="${pedidoForm}" th:action="${pedidoId == null} ? @{/pedidos} : @{/pedidos/{id}/editar(id=${pedidoId})}" method="post">
+    <div class="notice error" role="alert" th:if="${#fields.hasAnyErrors()}"><strong>Revise os campos abaixo.</strong><p th:each="erro : ${#fields.globalErrors()}" th:text="${erro}"></p></div>
+    <div class="field"><label for="nomeCliente">Nome do cliente <span class="muted">(obrigatório)</span></label><input id="nomeCliente" th:field="*{nomeCliente}" required maxlength="120" autocomplete="name" placeholder="Ex.: Ana Silva" th:errorclass="invalid" aria-describedby="nomeErro"><p id="nomeErro" class="field-error" th:errors="*{nomeCliente}"></p></div>
+    <div class="field"><label for="dataPedido">Data do pedido <span class="muted">(obrigatória)</span></label><input id="dataPedido" type="date" th:field="*{dataPedido}" min="0001-01-01" max="9999-12-31" required th:errorclass="invalid" aria-describedby="dataErro"><p id="dataErro" class="field-error" th:errors="*{dataPedido}"></p></div>
+    <p class="muted" th:if="${pedidoId == null}">O pedido será criado como <strong>Rascunho</strong>.</p>
+    <div class="form-actions"><button class="button" type="submit" th:text="${pedidoId == null ? 'Criar pedido' : 'Salvar alterações'}"></button><a class="button secondary" th:href="${pedidoId == null} ? @{/pedidos} : @{/pedidos/{id}(id=${pedidoId})}">Voltar sem salvar</a></div>
+  </form>
+</main><footer th:replace="~{fragments :: footer}"></footer></body></html>

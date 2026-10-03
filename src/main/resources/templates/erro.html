@@ -1,0 +1,3 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments :: head(${tituloErro})}"></head>
+<body><header th:replace="~{fragments :: header}"></header><main class="container narrow"><div th:replace="~{fragments :: avisos}"></div><section class="surface form-surface"><p class="eyebrow">VERIFIQUE A OPERAÇÃO</p><h1 th:text="${tituloErro}"></h1><p role="alert" th:text="${mensagemErro}"></p><a class="button" th:href="@{/pedidos}">Voltar aos pedidos</a></section></main><footer th:replace="~{fragments :: footer}"></footer></body></html>

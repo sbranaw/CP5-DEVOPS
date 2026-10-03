@@ -1,0 +1,4 @@
+AppRequests
+| where TimeGenerated > ago(1h)
+| summarize Requisicoes=count(), Falhas=countif(Success == false), DuracaoMediaMs=round(avg(DurationMs),2) by Name, ResultCode
+| order by Requisicoes desc

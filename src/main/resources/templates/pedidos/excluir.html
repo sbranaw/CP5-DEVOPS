@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments :: head('Confirmar exclusão')}"></head>
+<body><header th:replace="~{fragments :: header}"></header><main class="container narrow"><div th:replace="~{fragments :: avisos}"></div>
+  <a class="back-link" th:href="@{/pedidos/{id}(id=${pedido.id})}">← Voltar ao pedido</a>
+  <div class="page-heading"><div><p class="eyebrow">CONFIRMAÇÃO</p><h1 th:text="${item == null ? 'Excluir pedido?' : 'Excluir item?'}"></h1></div></div>
+  <section class="surface form-surface"><p th:if="${item == null}">Você excluirá o pedido <strong th:text="'#' + ${pedido.id}"></strong> de <strong th:text="${pedido.nomeCliente}"></strong> e todos os seus itens.</p><p th:if="${item != null}">Você excluirá <strong th:text="${item.descricaoProduto}"></strong> do pedido <strong th:text="'#' + ${pedido.id}"></strong>.</p>
+  <p class="notice error">Esta ação é permanente. Não será possível recuperar os dados excluídos.</p>
+  <form th:action="${item == null} ? @{/pedidos/{id}/excluir(id=${pedido.id})} : @{/pedidos/{id}/itens/{itemId}/excluir(id=${pedido.id},itemId=${item.id})}" method="post" class="form-actions"><button type="submit" name="confirmado" value="true" class="button danger">Sim, excluir</button><a class="button secondary" th:href="@{/pedidos/{id}(id=${pedido.id})}">Manter e voltar</a></form>
+  </section>
+</main><footer th:replace="~{fragments :: footer}"></footer></body></html>

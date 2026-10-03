@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"><head th:replace="~{fragments :: head(${itemId == null ? 'Adicionar item' : 'Editar item'})}"></head>
+<body><header th:replace="~{fragments :: header}"></header><main class="container narrow"><div th:replace="~{fragments :: avisos}"></div>
+  <a class="back-link" th:href="@{/pedidos/{id}(id=${pedido.id})}">← Voltar ao pedido</a>
+  <div class="page-heading"><div><p class="eyebrow" th:text="'PEDIDO #' + ${pedido.id} + ' · ' + ${pedido.nomeCliente}"></p><h1 th:text="${itemId == null ? 'Adicionar item' : 'Editar item'}"></h1><p class="muted">Informe o produto, a quantidade e o preço por unidade.</p></div></div>
+  <form class="surface form-surface" th:object="${itemForm}" th:action="${itemId == null} ? @{/pedidos/{id}/itens(id=${pedido.id})} : @{/pedidos/{id}/itens/{itemId}/editar(id=${pedido.id},itemId=${itemId})}" method="post">
+    <div class="notice error" role="alert" th:if="${#fields.hasAnyErrors()}"><strong>Revise os campos abaixo.</strong><p th:each="erro : ${#fields.globalErrors()}" th:text="${erro}"></p></div>
+    <div class="field"><label for="descricaoProduto">Produto <span class="muted">(obrigatório)</span></label><input id="descricaoProduto" th:field="*{descricaoProduto}" required maxlength="200" placeholder="Ex.: Teclado sem fio" th:errorclass="invalid" aria-describedby="produtoErro"><p id="produtoErro" class="field-error" th:errors="*{descricaoProduto}"></p></div>
+    <div class="form-columns"><div class="field"><label for="quantidade">Quantidade</label><input id="quantidade" type="number" th:field="*{quantidade}" min="1" max="10000" step="1" required th:errorclass="invalid" aria-describedby="quantidadeErro"><p id="quantidadeErro" class="field-error" th:errors="*{quantidade}"></p></div>
+    <div class="field"><label for="precoUnitario">Preço unitário (R$)</label><input id="precoUnitario" type="number" th:field="*{precoUnitario}" min="0.01" max="9999999999.99" step="0.01" required th:errorclass="invalid" aria-describedby="precoErro"><p id="precoErro" class="field-error" th:errors="*{precoUnitario}"></p></div></div>
+    <p class="muted">O total do pedido será recalculado ao salvar.</p>
+    <div class="form-actions"><button class="button" type="submit" th:text="${itemId == null ? 'Adicionar item' : 'Salvar alterações'}"></button><a class="button secondary" th:href="@{/pedidos/{id}(id=${pedido.id})}">Voltar sem salvar</a></div>
+  </form>
+</main><footer th:replace="~{fragments :: footer}"></footer></body></html>
