@@ -7,12 +7,14 @@ Aplicação Java de gestão de pedidos com telas em português, CRUD de pedidos 
 - Thiago Rodrigues da Mota — RM563650
 - Moisés Waidemann Molinillo — RM563719
 
-**Site:** https://dimdim-pedidos-261002-ce05.azurewebsites.net/pedidos
+**Site validado:** https://dimdim-pedidos-261002-ce05-h8gbb9a4hghjch3.brazilsouth-01.azurewebsites.net/pedidos
 **Repositório:** https://github.com/sbranaw/CP5-DEVOPS
 
 ## Comece aqui
 
 O [guia de execução](docs/guia-execucao.md) apresenta requisitos, caminhos e comandos. O [How To](docs/how-to.md) explica implantação e validação. O [guia de uso](docs/uso.md) descreve as operações e a conferência dos dados.
+
+O [registro Azure atual](docs/azure-atual.md) documenta o banco recriado, as validações concluídas e o roteiro Bash de criação/configuração/deploy do Web App `-cli`, usando o banco existente. Sua publicação ainda precisa ser confirmada.
 
 ## Tecnologias
 

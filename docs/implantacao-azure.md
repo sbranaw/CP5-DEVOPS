@@ -1,5 +1,9 @@
 # Implantação na Azure com Azure CLI
 
+## Ambiente recriado em outubro de 2026
+
+Consulte [Azure atual](azure-atual.md) para o banco `dimdim-pedidos` no servidor `dimdim-sql-261002-ce05`, o plano F1 existente e o Web App criado pelo CLI. O roteiro `infra/Deploy-ExistingAzure.sh` funciona no Cloud Shell (Bash), reutiliza esse banco e copia credenciais/monitoramento da aplicação de origem. Os comandos abaixo descrevem o provisionamento completo via PowerShell para um ambiente novo; `-Resume` redefine senhas e não deve ser aplicado ao ambiente atual.
+
 ## Recursos
 
 Um grupo de recursos exclusivo para DimDim, plano App Service Linux, Web App Java 21, servidor lógico Azure SQL e banco SQL Basic com duas tabelas relacionadas.

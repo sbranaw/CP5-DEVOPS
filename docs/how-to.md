@@ -2,6 +2,18 @@
 
 Comece pelos [requisitos e caminhos](guia-execucao.md). Execute os comandos na raiz do repositório, onde está pom.xml.
 
+## Ambiente atual: Cloud Shell e banco já criado
+
+Para os recursos recriados em outubro de 2026, siga [Azure atual](azure-atual.md), que contém nomes do servidor/banco, estado confirmado e comandos completos. No Cloud Shell (Bash), com Java 21:
+
+```bash
+bash ./mvnw verify
+bash infra/Deploy-ExistingAzure.sh
+bash infra/Deploy-ExistingAzure.sh --execute --deploy
+```
+
+Esse fluxo cria/configura o Web App `-cli` no plano F1 existente e reutiliza o Azure SQL, as credenciais e o monitoramento da aplicação de origem. O fluxo PowerShell abaixo é para provisionamento completo de outro ambiente; sua retomada redefine senhas.
+
 ## Compilar e experimentar
 
 ```powershell

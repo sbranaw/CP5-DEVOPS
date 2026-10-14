@@ -1,0 +1,13 @@
+{
+  "subscriptionId": "7ffd9a93-f463-4310-b7bd-d9cd1b458836",
+  "resourceGroup": "rg-dimdim-261002-ce05",
+  "location": "brazilsouth",
+  "appServicePlan": "ASP-rgdimdim261002ce05-9099",
+  "appServiceSku": "F1",
+  "sourceWebApp": "dimdim-pedidos-261002-ce05",
+  "webApp": "dimdim-pedidos-261002-ce05-cli",
+  "sqlServer": "dimdim-sql-261002-ce05",
+  "database": "dimdim-pedidos",
+  "sqlAdmin": "dimdimadmin",
+  "sqlAppUser": "dimdim_app"
+}

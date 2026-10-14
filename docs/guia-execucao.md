@@ -9,7 +9,7 @@
 | Local com Azure SQL | Requisitos locais, banco, credenciais e TCP 1433 | Azure SQL |
 | Nova implantação | JDK 21, PowerShell 7, Azure CLI e assinatura autorizada | Azure SQL |
 
-Site: https://dimdim-pedidos-261002-ce05.azurewebsites.net/pedidos. Para navegar no site não é necessário instalar Java.
+Site validado: https://dimdim-pedidos-261002-ce05-h8gbb9a4hghjch3.brazilsouth-01.azurewebsites.net/pedidos. Para navegar no site não é necessário instalar Java. Consulte [Azure atual](azure-atual.md) para o banco recriado e os comandos de criação/deploy do destino `-cli`.
 
 ## 2. Obtenha o projeto
 

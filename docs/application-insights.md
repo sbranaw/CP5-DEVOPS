@@ -1,5 +1,9 @@
 # Application Insights para DimDim Pedidos
 
+## Monitoramento do ambiente atual
+
+Na aplicação de origem `dimdim-pedidos-261002-ce05`, a coleta de requisições e dependências SQL foi confirmada no portal. O HTTP 403 observado veio de um formulário com token CSRF antigo após reinício. Veja [Azure atual](azure-atual.md) para os recursos e o estado da publicação. O roteiro Bash copia a configuração do monitoramento existente para o Web App `-cli`; a telemetria desse destino deve ser confirmada após o deploy. Os nomes, cotas e configurações descritos abaixo pertencem ao provisionamento pelo script PowerShell, não foram confirmados para o recurso habilitado pelo portal.
+
 ## Configuração
 
 O monitoramento usa o agente Java gerenciado pelo App Service Linux. Não requer incluir SDK no código da aplicação nem empacotar outro agente no JAR. A conexão de telemetria fica nas configurações do Web App.

@@ -2,7 +2,19 @@
 
 Aplicação web Java para gerenciar pedidos e itens, com CRUD, cálculo de valores, controle de status, persistência Azure SQL e monitoramento Application Insights.
 
-[Aplicação publicada](https://dimdim-pedidos-261002-ce05.azurewebsites.net/pedidos)
+[Aplicação publicada e validada](https://dimdim-pedidos-261002-ce05-h8gbb9a4hghjch3.brazilsouth-01.azurewebsites.net/pedidos)
+
+O banco Azure SQL foi recriado e validado com `dbo.pedido` e `dbo.item_pedido`, PKs, FK e exclusão em cascata. O CRUD da aplicação e a telemetria SQL no Application Insights foram conferidos. Um segundo Web App, `dimdim-pedidos-261002-ce05-cli`, foi criado pelo Azure CLI; sua configuração e publicação ainda precisam de confirmação. Consulte o [ambiente Azure atual e comandos de criação/deploy](docs/azure-atual.md).
+
+Para publicar no destino CLI usando o banco existente, no Cloud Shell (Bash), com Java 21:
+
+```bash
+bash ./mvnw verify
+bash infra/Deploy-ExistingAzure.sh
+bash infra/Deploy-ExistingAzure.sh --execute --deploy
+```
+
+O primeiro comando compila e testa; o segundo mostra o plano; o terceiro configura/publica. O roteiro reutiliza as credenciais da aplicação de origem e não redefine senhas SQL.
 
 ## Tecnologias
 
@@ -41,6 +53,7 @@ Para persistência Azure SQL, configure DB_URL, DB_USERNAME e DB_PASSWORD e exec
 | [How To](docs/how-to.md) | Compilação, implantação e validação |
 | [Modelo e regras](docs/modelo-e-regras.md) | Tabelas, relacionamento e regras de negócio |
 | [Implantação Azure](docs/implantacao-azure.md) | Provisionamento e publicação pelo Azure CLI |
+| [Azure atual](docs/azure-atual.md) | Banco recriado, estado confirmado e criação/deploy no Cloud Shell |
 | [Application Insights](docs/application-insights.md) | Instrumentação e consultas de telemetria |
 | [Uso da aplicação](docs/uso.md) | Fluxo de pedidos e conferência de dados |
 
